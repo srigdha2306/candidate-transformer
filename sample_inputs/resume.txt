@@ -1,0 +1,12 @@
+Alice Johnson
+alice.johnson@example.com
+555-123-4567
+
+Skills: Python, Docker, Kubernetes, AWS, Machine Learning
+
+Experience
+Led infrastructure migration to AWS at Acme Corp
+Designed microservices with Docker and Kubernetes
+
+Education
+BS Computer Science, MIT

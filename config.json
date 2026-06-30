@@ -1,0 +1,6 @@
+{
+  "fields": ["candidate_id", "name", "email", "phone", "skills", "experience", "education", "summary"],
+  "field_rename": {},
+  "include_confidence": true,
+  "missing_value": "null"
+}

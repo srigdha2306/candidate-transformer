@@ -1,0 +1,165 @@
+{
+  "candidate_id": "C001",
+  "name": {
+    "value": "Alice Johnson",
+    "provenance": [
+      {
+        "source": "csv",
+        "source_file": "sample_inputs\\recruiter.csv",
+        "confidence": 0.9,
+        "raw_value": "Alice Johnson"
+      },
+      {
+        "source": "resume_txt",
+        "source_file": "sample_inputs\\resume.txt",
+        "confidence": 0.7,
+        "raw_value": "Alice Johnson"
+      }
+    ]
+  },
+  "email": {
+    "value": "alice.johnson@example.com",
+    "provenance": [
+      {
+        "source": "csv",
+        "source_file": "sample_inputs\\recruiter.csv",
+        "confidence": 0.9,
+        "raw_value": "alice.johnson@example.com"
+      },
+      {
+        "source": "resume_txt",
+        "source_file": "sample_inputs\\resume.txt",
+        "confidence": 0.7,
+        "raw_value": "alice.johnson@example.com"
+      }
+    ]
+  },
+  "phone": {
+    "value": "+15551234567",
+    "provenance": [
+      {
+        "source": "csv",
+        "source_file": "sample_inputs\\recruiter.csv",
+        "confidence": 0.9,
+        "raw_value": "(555) 123-4567"
+      },
+      {
+        "source": "resume_txt",
+        "source_file": "sample_inputs\\resume.txt",
+        "confidence": 0.7,
+        "raw_value": "555-123-4567"
+      }
+    ]
+  },
+  "skills": [
+    {
+      "name": "Python",
+      "canonical_name": "Python",
+      "provenance": [
+        {
+          "source": "csv",
+          "source_file": "sample_inputs\\recruiter.csv",
+          "confidence": 0.9,
+          "raw_value": "Python"
+        }
+      ]
+    },
+    {
+      "name": "SQL",
+      "canonical_name": "SQL",
+      "provenance": [
+        {
+          "source": "csv",
+          "source_file": "sample_inputs\\recruiter.csv",
+          "confidence": 0.9,
+          "raw_value": "SQL"
+        }
+      ]
+    },
+    {
+      "name": "Docker",
+      "canonical_name": "Docker",
+      "provenance": [
+        {
+          "source": "csv",
+          "source_file": "sample_inputs\\recruiter.csv",
+          "confidence": 0.9,
+          "raw_value": "Docker"
+        },
+        {
+          "source": "resume_txt",
+          "source_file": "sample_inputs\\resume.txt",
+          "confidence": 0.7,
+          "raw_value": "docker"
+        }
+      ]
+    },
+    {
+      "name": "Kubernetes",
+      "canonical_name": "Kubernetes",
+      "provenance": [
+        {
+          "source": "csv",
+          "source_file": "sample_inputs\\recruiter.csv",
+          "confidence": 0.9,
+          "raw_value": "Kubernetes"
+        },
+        {
+          "source": "resume_txt",
+          "source_file": "sample_inputs\\resume.txt",
+          "confidence": 0.7,
+          "raw_value": "kubernetes"
+        }
+      ]
+    },
+    {
+      "name": "AWS",
+      "canonical_name": "AWS",
+      "provenance": [
+        {
+          "source": "csv",
+          "source_file": "sample_inputs\\recruiter.csv",
+          "confidence": 0.9,
+          "raw_value": "AWS"
+        },
+        {
+          "source": "resume_txt",
+          "source_file": "sample_inputs\\resume.txt",
+          "confidence": 0.7,
+          "raw_value": "aws"
+        }
+      ]
+    },
+    {
+      "name": "Machine Learning",
+      "canonical_name": "Machine Learning",
+      "provenance": [
+        {
+          "source": "resume_txt",
+          "source_file": "sample_inputs\\resume.txt",
+          "confidence": 0.7,
+          "raw_value": "machine learning"
+        }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "title": "Senior Engineer",
+      "company": "Acme Corp"
+    },
+    {
+      "description": "Led infrastructure migration to AWS at Acme Corp"
+    },
+    {
+      "description": "Designed microservices with Docker and Kubernetes"
+    }
+  ],
+  "education": [
+    {
+      "degree": "BS Computer Science",
+      "institution": "MIT"
+    }
+  ],
+  "summary": null
+}

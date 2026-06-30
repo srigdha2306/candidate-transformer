@@ -1,0 +1,4 @@
+candidate_id,name,email,phone,skills,title,company,degree,institution
+C001,Alice Johnson,alice.johnson@example.com,(555) 123-4567,Python; SQL; Docker,Senior Engineer,Acme Corp,BS Computer Science,MIT
+C001,Alice Johnson,alice@example.com,,Kubernetes; AWS,,,
+C002,Bob Smith,bob.smith@example.com,+1 555 987 6543,Java; React; MongoDB,Backend Developer,Globex Inc,,
