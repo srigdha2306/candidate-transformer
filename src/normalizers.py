@@ -63,7 +63,7 @@ def normalize_email(raw: str) -> str | None:
         return None
 
 
-def normalize_phone(raw: str, default_region: str = "US") -> str | None:
+def normalize_phone(raw: str, default_region: str = "IN") -> str | None:
     raw = raw.strip()
     try:
         parsed = phonenumbers.parse(raw, default_region)
@@ -72,16 +72,26 @@ def normalize_phone(raw: str, default_region: str = "US") -> str | None:
     except phonenumbers.NumberParseException:
         pass
 
+    country_code = _default_country_code(default_region)
     digits = re.sub(r"\D", "", raw)
     if len(digits) == 10:
-        return f"+1{digits}"
+        return f"+{country_code}{digits}"
     if len(digits) == 11 and digits.startswith("1"):
         return f"+{digits}"
     if len(digits) == 11 and digits.startswith("0"):
         return f"+{digits[1:]}"
-    if len(digits) > 11 and digits.startswith("+"):
-        return f"+{digits[1:]}"
+    if len(digits) > 11 and raw.startswith("+"):
+        return raw
     return None
+
+
+def _default_country_code(region: str) -> str:
+    mapping = {
+        "US": "1", "GB": "44", "IN": "91", "CA": "1",
+        "AU": "61", "DE": "49", "FR": "33", "JP": "81",
+        "SG": "65", "AE": "971",
+    }
+    return mapping.get(region.upper(), "91")
 
 
 def normalize_skill(raw: str) -> tuple[str, str]:

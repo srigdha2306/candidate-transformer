@@ -16,6 +16,7 @@ def load_config(path: str | Path) -> OutputConfig:
     field_rename = data.get("field_rename", {})
     include_confidence = data.get("include_confidence", True)
     missing_raw = data.get("missing_value", "null")
+    default_region = data.get("default_region", "IN")
 
     try:
         missing = MissingValueStrategy(missing_raw)
@@ -27,4 +28,5 @@ def load_config(path: str | Path) -> OutputConfig:
         field_rename=field_rename,
         include_confidence=include_confidence,
         missing_value=missing,
+        default_region=default_region,
     )

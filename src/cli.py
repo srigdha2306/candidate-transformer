@@ -1,5 +1,6 @@
 from __future__ import annotations
 import json
+import logging
 import sys
 from pathlib import Path
 import click
@@ -9,6 +10,13 @@ from src.extractors.resume_extractor import extract_from_resume
 from src.merger import merge_candidates
 from src.exporter import export_candidate
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    datefmt="%H:%M:%S",
+)
+logger = logging.getLogger(__name__)
+
 
 @click.command()
 @click.option("--csv", "-c", "csv_path", help="Path to recruiter CSV file")
@@ -16,56 +24,63 @@ from src.exporter import export_candidate
 @click.option("--config", "-cfg", "config_path", default="config.json", help="Path to config.json")
 @click.option("--output", "-o", "output_path", default="output.json", help="Path to write output JSON")
 @click.option("--indent", "-i", default=2, help="JSON indentation level")
-def main(csv_path, resume_paths, config_path, output_path, indent):
+@click.option("--verbose", "-v", is_flag=True, help="Enable debug logging")
+def main(csv_path, resume_paths, config_path, output_path, indent, verbose):
+    if verbose:
+        logging.getLogger().setLevel(logging.DEBUG)
+
     config = load_config(config_path)
+    logger.info("Loaded config from %s (default_region=%s)", config_path, config.default_region)
 
     all_candidates = []
 
     if csv_path:
-        click.echo(f"Reading CSV: {csv_path}")
+        logger.info("Reading CSV: %s", csv_path)
         csv_file = Path(csv_path)
         if not csv_file.exists():
-            click.echo(f"Error: CSV file not found: {csv_path}", err=True)
+            logger.error("CSV file not found: %s", csv_path)
             sys.exit(1)
         try:
-            csv_candidates = extract_from_csv(csv_file)
+            csv_candidates = extract_from_csv(csv_file, config.default_region)
             all_candidates.extend(csv_candidates)
-            click.echo(f"  Found {len(csv_candidates)} candidate(s) from CSV")
+            logger.info("Found %d candidate(s) from CSV", len(csv_candidates))
         except Exception as e:
-            click.echo(f"Error reading CSV: {e}", err=True)
+            logger.error("Error reading CSV: %s", e)
             sys.exit(1)
 
     for rp in resume_paths:
-        click.echo(f"Reading resume: {rp}")
+        logger.info("Reading resume: %s", rp)
         res_file = Path(rp)
         if not res_file.exists():
-            click.echo(f"Error: Resume file not found: {rp}", err=True)
+            logger.error("Resume file not found: %s", rp)
             sys.exit(1)
         try:
-            resume_candidate = extract_from_resume(res_file)
+            resume_candidate = extract_from_resume(res_file, config.default_region)
             if resume_candidate:
                 all_candidates.append(resume_candidate)
-                click.echo(f"  Extracted candidate: {resume_candidate.candidate_id}")
+                logger.info("Extracted candidate: %s", resume_candidate.candidate_id)
             else:
-                click.echo(f"  Warning: No data extracted from {rp}", err=True)
+                logger.warning("No data extracted from %s", rp)
         except Exception as e:
-            click.echo(f"Error reading resume {rp}: {e}", err=True)
+            logger.error("Error reading resume %s: %s", rp, e)
             sys.exit(1)
 
     if not all_candidates:
-        click.echo("Error: No candidates found from any source", err=True)
+        logger.error("No candidates found from any source")
         sys.exit(1)
 
     merged = merge_candidates(all_candidates)
+    logger.info("Merged %d source(s) into candidate %s", len(all_candidates), merged.candidate_id)
 
     result = export_candidate(merged, config)
+    logger.info("Exported candidate data")
 
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(result, f, indent=indent, default=str)
 
-    click.echo(f"Output written to {output_path}")
+    logger.info("Output written to %s", output_path)
 
 
 if __name__ == "__main__":

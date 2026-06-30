@@ -14,14 +14,18 @@ class TestNormalizeEmail:
 
 
 class TestNormalizePhone:
-    def test_us_phone_with_dashes(self):
-        assert normalize_phone("555-123-4567") == "+15551234567"
+    def test_in_phone_with_dashes(self):
+        assert normalize_phone("98765-43210") == "+919876543210"
 
-    def test_us_phone_with_parens(self):
-        assert normalize_phone("(555) 123-4567") == "+15551234567"
+    def test_in_phone_no_prefix(self):
+        assert normalize_phone("9876543210") == "+919876543210"
 
     def test_e164_already(self):
-        assert normalize_phone("+15551234567") == "+15551234567"
+        assert normalize_phone("+919876543210") == "+919876543210"
+
+    def test_us_phone_with_region_override(self):
+        result = normalize_phone("555-123-4567", "US")
+        assert result == "+15551234567"
 
     def test_international(self):
         result = normalize_phone("+44 20 7946 0958")

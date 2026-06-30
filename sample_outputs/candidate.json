@@ -1,165 +1,143 @@
 {
   "candidate_id": "C001",
-  "name": {
-    "value": "Alice Johnson",
-    "provenance": [
-      {
-        "source": "csv",
-        "source_file": "sample_inputs\\recruiter.csv",
-        "confidence": 0.9,
-        "raw_value": "Alice Johnson"
-      },
-      {
-        "source": "resume_txt",
-        "source_file": "sample_inputs\\resume.txt",
-        "confidence": 0.7,
-        "raw_value": "Alice Johnson"
-      }
-    ]
+  "full_name": "Alice Johnson",
+  "emails": [
+    {
+      "value": "alice.johnson@example.com",
+      "confidence": 0.9,
+      "source": "csv"
+    },
+    {
+      "value": "alice@example.com",
+      "confidence": 0.9,
+      "source": "csv"
+    },
+    {
+      "value": "bob.smith@example.com",
+      "confidence": 0.9,
+      "source": "csv"
+    }
+  ],
+  "phones": [
+    {
+      "value": "+915551234567",
+      "confidence": 0.9,
+      "source": "csv"
+    },
+    {
+      "value": "+15559876543",
+      "confidence": 0.9,
+      "source": "csv"
+    }
+  ],
+  "location": {
+    "confidence": 0.5,
+    "source": "resume"
   },
-  "email": {
-    "value": "alice.johnson@example.com",
-    "provenance": [
-      {
-        "source": "csv",
-        "source_file": "sample_inputs\\recruiter.csv",
-        "confidence": 0.9,
-        "raw_value": "alice.johnson@example.com"
-      },
-      {
-        "source": "resume_txt",
-        "source_file": "sample_inputs\\resume.txt",
-        "confidence": 0.7,
-        "raw_value": "alice.johnson@example.com"
-      }
-    ]
-  },
-  "phone": {
-    "value": "+15551234567",
-    "provenance": [
-      {
-        "source": "csv",
-        "source_file": "sample_inputs\\recruiter.csv",
-        "confidence": 0.9,
-        "raw_value": "(555) 123-4567"
-      },
-      {
-        "source": "resume_txt",
-        "source_file": "sample_inputs\\resume.txt",
-        "confidence": 0.7,
-        "raw_value": "555-123-4567"
-      }
-    ]
-  },
+  "links": [],
+  "headline": null,
+  "years_experience": null,
   "skills": [
     {
       "name": "Python",
       "canonical_name": "Python",
-      "provenance": [
-        {
-          "source": "csv",
-          "source_file": "sample_inputs\\recruiter.csv",
-          "confidence": 0.9,
-          "raw_value": "Python"
-        }
-      ]
+      "confidence": 0.9,
+      "source": "csv"
     },
     {
       "name": "SQL",
       "canonical_name": "SQL",
-      "provenance": [
-        {
-          "source": "csv",
-          "source_file": "sample_inputs\\recruiter.csv",
-          "confidence": 0.9,
-          "raw_value": "SQL"
-        }
-      ]
+      "confidence": 0.9,
+      "source": "csv"
     },
     {
       "name": "Docker",
       "canonical_name": "Docker",
-      "provenance": [
-        {
-          "source": "csv",
-          "source_file": "sample_inputs\\recruiter.csv",
-          "confidence": 0.9,
-          "raw_value": "Docker"
-        },
-        {
-          "source": "resume_txt",
-          "source_file": "sample_inputs\\resume.txt",
-          "confidence": 0.7,
-          "raw_value": "docker"
-        }
-      ]
+      "confidence": 0.9,
+      "source": "csv"
     },
     {
       "name": "Kubernetes",
       "canonical_name": "Kubernetes",
-      "provenance": [
-        {
-          "source": "csv",
-          "source_file": "sample_inputs\\recruiter.csv",
-          "confidence": 0.9,
-          "raw_value": "Kubernetes"
-        },
-        {
-          "source": "resume_txt",
-          "source_file": "sample_inputs\\resume.txt",
-          "confidence": 0.7,
-          "raw_value": "kubernetes"
-        }
-      ]
+      "confidence": 0.9,
+      "source": "csv"
     },
     {
       "name": "AWS",
       "canonical_name": "AWS",
-      "provenance": [
-        {
-          "source": "csv",
-          "source_file": "sample_inputs\\recruiter.csv",
-          "confidence": 0.9,
-          "raw_value": "AWS"
-        },
-        {
-          "source": "resume_txt",
-          "source_file": "sample_inputs\\resume.txt",
-          "confidence": 0.7,
-          "raw_value": "aws"
-        }
-      ]
+      "confidence": 0.9,
+      "source": "csv"
     },
     {
-      "name": "Machine Learning",
+      "name": "Java",
+      "canonical_name": "Java",
+      "confidence": 0.9,
+      "source": "csv"
+    },
+    {
+      "name": "React",
+      "canonical_name": "React",
+      "confidence": 0.9,
+      "source": "csv"
+    },
+    {
+      "name": "MongoDB",
+      "canonical_name": "MongoDB",
+      "confidence": 0.9,
+      "source": "csv"
+    },
+    {
+      "name": "machine learning",
       "canonical_name": "Machine Learning",
-      "provenance": [
-        {
-          "source": "resume_txt",
-          "source_file": "sample_inputs\\resume.txt",
-          "confidence": 0.7,
-          "raw_value": "machine learning"
-        }
-      ]
+      "confidence": 0.7,
+      "source": "resume"
     }
   ],
   "experience": [
     {
       "title": "Senior Engineer",
-      "company": "Acme Corp"
+      "company": "Acme Corp",
+      "confidence": 0.9,
+      "source": "csv"
     },
     {
-      "description": "Led infrastructure migration to AWS at Acme Corp"
+      "title": "Backend Developer",
+      "company": "Globex Inc",
+      "confidence": 0.9,
+      "source": "csv"
     },
     {
-      "description": "Designed microservices with Docker and Kubernetes"
+      "description": "Led infrastructure migration to AWS at Acme Corp",
+      "confidence": 0.7,
+      "source": "resume"
+    },
+    {
+      "description": "Designed microservices with Docker and Kubernetes",
+      "confidence": 0.7,
+      "source": "resume"
     }
   ],
   "education": [
     {
       "degree": "BS Computer Science",
-      "institution": "MIT"
+      "institution": "MIT",
+      "confidence": 0.9,
+      "source": "csv"
+    },
+    {
+      "description": "BS Computer Science, MIT",
+      "confidence": 0.7,
+      "source": "resume"
     }
   ],
-  "summary": null
+  "provenance": {
+    "full_name": "csv,resume",
+    "emails": "csv,resume",
+    "phones": "csv",
+    "skills": "csv,resume",
+    "experience": "csv,resume",
+    "education": "csv,resume",
+    "location": "resume"
+  },
+  "overall_confidence": 0.84
 }
